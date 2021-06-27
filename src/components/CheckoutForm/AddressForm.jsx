@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { commerce } from '../../lib/commerce';
 
+import { commerce } from '../../lib/commerce';
 import FormInput from './CustomTextField';
 
 const AddressForm = ({ checkoutToken, next }) => {
@@ -46,7 +46,7 @@ const AddressForm = ({ checkoutToken, next }) => {
    }, []);
 
    useEffect(() => {
-      if(shippingCountry) fetchSubdivisions(shippingCountry)
+      if(shippingCountry) fetchSubdivisions(shippingCountry);
    }, [shippingCountry]);
 
    useEffect(() => {
@@ -63,7 +63,7 @@ const AddressForm = ({ checkoutToken, next }) => {
                   <FormInput required name="lastName" label="Last name" />
                   <FormInput required name="address1" label="Address" />
                   <FormInput required name="email" label="Email" />
-                  <FormInput required name="City" label="City" />
+                  <FormInput required name="city" label="City" />
                   <FormInput required name="zip" label="ZIP / Postal code" />
                   <Grid item xs={12} sm={6}>
                      <InputLabel>Shipping Country</InputLabel>
@@ -99,7 +99,7 @@ const AddressForm = ({ checkoutToken, next }) => {
                <br />
                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <Button component={Link} to="/cart" variant="outlined">Back to Cart</Button>
-                  <Button  type="submit" variant="conatiner" color="primary" >Next</Button>
+                  <Button  type="submit" variant="contained" color="primary" >Next</Button>
                </div>
             </form>
          </FormProvider>

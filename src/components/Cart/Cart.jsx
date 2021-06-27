@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Typography, Button, Grid } from '@material-ui/core';
-
 import { Link } from 'react-router-dom';
+
 import useStyles from './styles';
 import CartItem from './CartItem/CartItem';
 
@@ -15,6 +15,8 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
          </Link>
       </Typography>
    );
+
+   if(!cart.line_items) return 'Loading...';
 
    const FilledCart = () => (
       <>
@@ -33,9 +35,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
             </div>
          </div>
       </>
-   )
-
-   if(!cart.line_items) return 'Loading...';
+   );
 
    return (
       <Container>
@@ -43,7 +43,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
          <Typography className={classes.title} variant="h3" gutterBottom> Your Shopping Cart</Typography>
          {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
       </Container>
-   )
-}
+   );
+};
 
-export default Cart
+export default Cart;
